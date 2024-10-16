@@ -42,6 +42,7 @@ function filterManualChunks(id: string) {
 }
 
 export default defineConfig({
+	publicDir: false,
 	build: {
 		outDir: path.resolve(__dirname, `dist/${plugin_dir_name}/assets`),
 		emptyOutDir: false,

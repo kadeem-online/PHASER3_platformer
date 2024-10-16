@@ -13,6 +13,7 @@ function filterManualChunks(id: string) {
 export default defineConfig({
 	appType: "spa",
 	base: "",
+	publicDir: false,
 	build: {
 		outDir: path.resolve(__dirname, `dist/itch`),
 		rollupOptions: {
