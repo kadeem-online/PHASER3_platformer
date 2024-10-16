@@ -27,6 +27,15 @@ export function runGame(): Phaser.Game | null {
 			parent: game_element,
 			fullscreenTarget: game_element.parentElement || game_element,
 
+			pixelArt: true,
+
+			physics: {
+				default: "arcade",
+				arcade: {
+					debug: true,
+				},
+			},
+
 			scale: {
 				mode: Phaser.Scale.ScaleModes.FIT,
 				autoCenter: Phaser.Scale.CENTER_BOTH,
