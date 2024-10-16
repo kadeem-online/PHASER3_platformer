@@ -1,3 +1,12 @@
+/**
+ *
+ * boot.ts: This scene is responsible for loading any assets required by the preload
+ * scene such as a splashscreen or logo. These assets should be lightweight to
+ * prevent delaying the showing of the preload scene.
+ *
+ */
+
+// Phaser
 import Phaser from "phaser";
 
 // Utilities
@@ -13,45 +22,24 @@ export default class BootScene extends Phaser.Scene {
 		super(SCENES.boot_scene);
 	}
 
+	/**
+	 * Preload any assets required by the preload scene here.
+	 */
 	preload() {
 		this.load.setBaseURL(UTIL_getPublicDirectoryURLPrefix());
-
-		this.load.image("debug_grass_tile", IMG_DEBUG_TILE);
-		this.load.image("debug_background", IMG_DEBUG_BACKGROUND);
 	}
 
+	/**
+	 * This function is run once any preloaded assets are ready.
+	 */
 	create() {
-		this._DEBUG_banner();
+		this.__start_next_scene();
 	}
 
-	_DEBUG_banner() {
-		this.add.image(
-			Number(this.game.config.width) / 2,
-			Number(this.game.config.height) / 2,
-			"debug_background"
-		);
-
-		// confirm the scene is viewable
-		const debug_text = this.add.text(
-			Number(this.game.config.width) / 2,
-			Number(this.game.config.height) / 2,
-			"Boot Scene Works.",
-			{
-				fontSize: 32,
-				color: "#fafafa",
-				stroke: "#272727",
-				strokeThickness: 2,
-			}
-		);
-		debug_text.setOrigin(0.5);
-
-		// confirm asset load properly
-		this.add.tileSprite(
-			Number(this.game.config.width) / 2,
-			Number(this.game.config.height) - 18 / 2,
-			Number(this.game.config.width),
-			18,
-			"debug_grass_tile"
-		);
+	/**
+	 * Changes to the next queued scene after the preloader.
+	 */
+	__start_next_scene() {
+		this.scene.start(SCENES.preload_scene);
 	}
 }

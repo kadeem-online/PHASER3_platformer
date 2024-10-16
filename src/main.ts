@@ -1,5 +1,7 @@
 // SCENES
 import BootScene from "./scenes/boot";
+import PreloadScene from "./scenes/preload";
+import TestLevel01 from "./scenes/test-level-01";
 
 // Utilities
 import { UTIL_getGameHTMLElement } from "./util/functions";
@@ -30,7 +32,7 @@ export function runGame(): Phaser.Game | null {
 				autoCenter: Phaser.Scale.CENTER_BOTH,
 			},
 
-			scene: [BootScene],
+			scene: [BootScene, PreloadScene, TestLevel01],
 		};
 
 		const game = new Phaser.Game(config);
