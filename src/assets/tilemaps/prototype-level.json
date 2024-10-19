@@ -8,7 +8,7 @@
          "encoding":"base64",
          "height":18,
          "id":1,
-         "name":"Tile Layer 1",
+         "name":"level-outline",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,
