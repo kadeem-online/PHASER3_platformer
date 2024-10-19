@@ -20,3 +20,8 @@ export const ASSETS = {
 		prototype_level: "PROTOTYPE_LEVEL_TILEMAP",
 	},
 };
+
+// Player constants
+export const PLAYER = {
+	gravity: 200,
+};
