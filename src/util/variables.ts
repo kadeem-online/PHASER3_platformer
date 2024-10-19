@@ -7,5 +7,5 @@ export const GAME_ELEMENT = "game-container-id";
 export const SCENES = {
 	boot_scene: "BOOT_SCENE",
 	preload_scene: "PRELOAD_SCENE",
-	test_level_01: "TEST_LEVEL_01",
+	prototype_level: "PROTOTYPE_LEVEL",
 };

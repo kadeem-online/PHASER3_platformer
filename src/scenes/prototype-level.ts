@@ -10,9 +10,9 @@ import Phaser from "phaser";
 // utilities
 import { SCENES } from "../util/variables";
 
-export default class TestLevel01 extends Phaser.Scene {
+export default class PrototypeLevel extends Phaser.Scene {
 	constructor() {
-		super(SCENES.test_level_01);
+		super(SCENES.prototype_level);
 	}
 
 	create() {

@@ -37,6 +37,6 @@ export default class PreloadScene extends Phaser.Scene {
 	 * Changes to the next queued scene after the preloader.
 	 */
 	__start_next_scene() {
-		this.scene.start(SCENES.test_level_01);
+		this.scene.start(SCENES.prototype_level);
 	}
 }
