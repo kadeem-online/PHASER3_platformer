@@ -8,15 +8,58 @@
 import Phaser from "phaser";
 
 // utilities
-import { SCENES } from "../util/variables";
+import { ASSETS, SCENES } from "../util/variables";
 
 export default class PrototypeLevel extends Phaser.Scene {
+	// Variables
+	layer_level_outline!: Phaser.Tilemaps.TilemapLayer;
+	level_tilemap!: Phaser.Tilemaps.Tilemap;
+
 	constructor() {
 		super(SCENES.prototype_level);
 	}
 
 	create() {
-		this.__DEBUG_banner();
+		this.__CREATE_level_tilemap();
+	}
+
+	__CREATE_level_tilemap(): void {
+		try {
+			// create map
+			this.level_tilemap = this.make.tilemap({
+				key: ASSETS.TILEMAP.prototype_level,
+			});
+
+			// create tileset
+			const prototype_tileset = this.level_tilemap.addTilesetImage(
+				"prototype-tileset",
+				ASSETS.SPRITESHEET.prototype_tiles
+			);
+
+			if (!prototype_tileset) {
+				throw new Error("Prototype tileset is null");
+			}
+
+			// create layers
+			this.__CREATE_layer_level_outline(this.level_tilemap, prototype_tileset);
+		} catch (error) {
+			throw new Error(`${error}`);
+		}
+		return;
+	}
+
+	__CREATE_layer_level_outline(
+		map: Phaser.Tilemaps.Tilemap,
+		tileset: Phaser.Tilemaps.Tileset
+	) {
+		const layer = map.createLayer("level-outline", tileset);
+
+		if (!layer) {
+			throw new Error("outline_tilemap_layer is null");
+		}
+
+		layer.setCollisionByProperty({ colllides: true });
+		this.layer_level_outline = layer;
 	}
 
 	/**
