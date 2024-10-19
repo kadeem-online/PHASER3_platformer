@@ -9,6 +9,7 @@ import Phaser from "phaser";
 
 // utilities
 import { ASSETS, SCENES } from "../util/variables";
+import { DEBUG_show_tilemap_layer_collisions } from "../util/functions";
 
 export default class PrototypeLevel extends Phaser.Scene {
 	// Variables
@@ -58,7 +59,12 @@ export default class PrototypeLevel extends Phaser.Scene {
 			throw new Error("outline_tilemap_layer is null");
 		}
 
-		layer.setCollisionByProperty({ colllides: true });
+		layer.setCollisionByProperty({ collides: true });
+
+		if (import.meta.env.VITE_SHOW_TILEMAP_DEBUG === "true") {
+			DEBUG_show_tilemap_layer_collisions(this, layer, {});
+		}
+
 		this.layer_level_outline = layer;
 	}
 
