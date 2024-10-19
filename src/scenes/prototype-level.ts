@@ -11,10 +11,14 @@ import Phaser from "phaser";
 import { ASSETS, SCENES } from "../util/variables";
 import { DEBUG_show_tilemap_layer_collisions } from "../util/functions";
 
+// components
+import Player from "../components/actors/player";
+
 export default class PrototypeLevel extends Phaser.Scene {
 	// Variables
 	layer_level_outline!: Phaser.Tilemaps.TilemapLayer;
 	level_tilemap!: Phaser.Tilemaps.Tilemap;
+	player!: Player;
 
 	constructor() {
 		super(SCENES.prototype_level);
@@ -22,6 +26,8 @@ export default class PrototypeLevel extends Phaser.Scene {
 
 	create() {
 		this.__CREATE_level_tilemap();
+
+		this.__CREATE_player_character();
 	}
 
 	__CREATE_level_tilemap(): void {
@@ -66,6 +72,26 @@ export default class PrototypeLevel extends Phaser.Scene {
 		}
 
 		this.layer_level_outline = layer;
+	}
+
+	__CREATE_player_character() {
+		// create the player game object
+		this.player = new Player(this, "RANDOM", 100, 100);
+
+		// set camera settings
+		this.cameras.main.setZoom(2);
+		this.cameras.main.startFollow(this.player);
+		this.cameras.main.setBounds(
+			0,
+			0,
+			Number(this.game.config.width),
+			Number(this.game.config.height)
+		);
+
+		// add collisions with outline layer
+		if (this.layer_level_outline) {
+			this.physics.add.collider(this.player, this.layer_level_outline);
+		}
 	}
 
 	/**
