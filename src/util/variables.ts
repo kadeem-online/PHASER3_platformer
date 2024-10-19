@@ -9,3 +9,14 @@ export const SCENES = {
 	preload_scene: "PRELOAD_SCENE",
 	prototype_level: "PROTOTYPE_LEVEL",
 };
+
+// Asset keys
+export const ASSETS = {
+	SPRITESHEET: {
+		characters: "CHARACTERS_SPRITESHEET",
+		prototype_tiles: "PROTOTYPE_TILES_SPRITESHEET",
+	},
+	TILEMAP: {
+		prototype_level: "PROTOTYPE_LEVEL_TILEMAP",
+	},
+};
